@@ -36,3 +36,5 @@ rtmbot.conf
 #IDEA settings
 .idea/
 
+#Secret
+speech-user.json

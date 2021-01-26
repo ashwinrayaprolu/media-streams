@@ -1,6 +1,10 @@
 const EventEmitter = require('events');
 const Speech = require('@google-cloud/speech');
-const speech = new Speech.SpeechClient();
+const speech = new Speech.SpeechClient({
+    projectId: 'speechproject-275700',
+    keyFilename: 'speech-user.json'
+  }
+);
 
 class TranscriptionService extends EventEmitter {
   constructor() {
@@ -8,7 +12,7 @@ class TranscriptionService extends EventEmitter {
     this.stream = null;
     this.streamCreatedAt = null;
   }
-  
+
   send(payload) {
     this.getStream().write(payload);
   }
@@ -39,7 +43,11 @@ class TranscriptionService extends EventEmitter {
         config: {
           encoding: "MULAW",
           sampleRateHertz: 8000,
-          languageCode: "en-US"
+          languageCode: "en-US",
+          "speechContexts": [{
+            "phrases": ["Ask TD", "Ask BMO", "Ask Capital One", "Ask Canadian Government","checking"],
+            "boost": 20
+          }]
         },
         interimResults: true
       };
@@ -53,7 +61,9 @@ class TranscriptionService extends EventEmitter {
           if (result === undefined || result.alternatives[0] === undefined) {
             return;
           }
-          this.emit('transcription', result.alternatives[0].transcript);
+          if(result.isFinal){
+            this.emit('transcription', result.alternatives[0].transcript);
+          }
         });
     }
 

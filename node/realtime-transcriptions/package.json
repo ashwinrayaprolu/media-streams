@@ -17,9 +17,32 @@
   },
   "homepage": "",
   "dependencies": {
+    "@google-cloud/speech": "^1.5.0",
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.3.2",
     "dotenv": "^4.0.0",
+    "express": "~4.14.0",
+    "fast-xml-parser": "^3.17.4",
+    "freemarker": "^2.1.0",
+    "freemarker.js": "^1.4.0",
+    "he": "^1.2.0",
     "httpdispatcher": "^2.1.2",
+    "jade": "~1.11.0",
+    "memory-cache": "^0.2.0",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.2",
+    "string-strip-html": "^4.4.7",
+    "stylus": "0.54.5",
+    "twilio": "^3.0.0-rc.17",
     "websocket": "^1.0.28",
-    "@google-cloud/speech": "^1.5.0"
+    "ws": "^7.3.0",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.4.23",
+    "xmldoc": "^1.1.2",
+    "xmldom": "^0.3.0"
+  },
+  "devDependencies": {
+    "freemarker-parser": "^1.1.6"
   }
 }
